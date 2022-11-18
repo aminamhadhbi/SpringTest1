@@ -34,7 +34,10 @@ public class FactureController {
         factureService.cancelFacture(idFacture);
     }
 
-
+    @GetMapping("FacturesByClient/{idClient}")
+    public List<Facture> getFacturesByClient(@PathVariable Long idClient){
+        return factureService.getFacturesByClient(idClient);
+    }
 
 
 }

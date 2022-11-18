@@ -36,6 +36,19 @@ public class FactureServiceImp implements IFactureService{
             factureRepository.deleteById(idFacture);
         }
 
+
+
+    @Override
+    public List<Facture> getFacturesByClient(Long idClient) {
+
+        return factureRepository.findFacturesByClientIdClient(idClient);
+
+
+    }
+
+
+
+
     }
 
 
@@ -46,17 +59,6 @@ public class FactureServiceImp implements IFactureService{
 
 
 
-
-
-
- /*   @Override
-    public void assignProduitToStock(Long idProduit, Long idStock){
-        Produit produit= produitRepository.findById(idProduit).orElse(null);
-        Stock stock= stockRepository.findById(idStock).orElse(null);
-        if(produit !=null && stock!=null){
-            produit.getIdStock.add(stock);
-            stockRepository.save(produit);
-        }*/
 
 
 

@@ -3,8 +3,8 @@ package tn.esprit.springtest.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.springtest.Entities.Produit;
+import tn.esprit.springtest.Entities.Stock;
 import tn.esprit.springtest.Repositories.ProduitRepository;
-import tn.esprit.springtest.Repositories.RayonRepository;
 import tn.esprit.springtest.Repositories.StockRepository;
 
 import java.util.List;
@@ -41,18 +41,22 @@ StockRepository stockRepository;
 
 
 
- /*   @Override
+   @Override
     public void assignProduitToStock(Long idProduit, Long idStock){
-        Produit produit= produitRepository.findById(idProduit).orElse(null);
-        Stock stock= stockRepository.findById(idStock).orElse(null);
-        if(produit !=null && stock!=null){
-            produit.getIdStock.add(stock);
-            stockRepository.save(produit);
-        }*/
+       Produit p = produitRepository.findById(idProduit).orElse(null);
+       Stock s = stockRepository.findById(idStock).orElse(null);
+       if (s != null && p != null) {
+           p.setStock(s);
+       }
+       produitRepository.save(p);
+   }
 
 
 
     }
+
+
+
 
 
 

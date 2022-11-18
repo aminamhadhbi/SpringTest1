@@ -10,4 +10,6 @@ public interface IFactureService {
     Facture retrieveFacture(Long idFacture);
 
     void cancelFacture(Long idFacture);
+
+    List<Facture> getFacturesByClient(Long idClient);
 }

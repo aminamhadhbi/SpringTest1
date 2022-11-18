@@ -27,7 +27,10 @@ public class ProduitController {
         return produitService.addProduit(c,idRayon,idStock);
     }
 
-
+    @PostMapping("/assign/{idProduit}/{idStock}")
+    public void assignProduitToStock(@PathVariable Long idProduit,@PathVariable Long idStock) {
+        produitService.assignProduitToStock(idProduit, idStock);
+    }
     @GetMapping("/getone")
     public Produit retrievebyid(@PathParam("id") Long id){
         return produitService.retrieveProduit(id);
