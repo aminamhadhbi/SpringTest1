@@ -15,8 +15,8 @@ public class ClientController {
     @Autowired
     IClientxService iClientxService;
 
-    @GetMapping("/retrieveAllContrats")
-    public List<Clientx> retrieveAllContrats(){
+    @GetMapping("/retrieveAllclients")
+    public List<Clientx> retrieveAllclients(){
         return iClientxService.retrieveAllClients();
     }
 
@@ -36,7 +36,7 @@ public class ClientController {
         return iClientxService.retrieveClient(id);
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public void remove(@PathParam("id") Long id){
         iClientxService.deleteClient(id);
     }

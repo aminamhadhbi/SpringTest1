@@ -2,11 +2,9 @@ package tn.esprit.springtest.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.springtest.Entities.Clientx;
 import tn.esprit.springtest.Entities.Produit;
-import tn.esprit.springtest.Entities.Stock;
-import tn.esprit.springtest.Repositories.ClientRepository;
 import tn.esprit.springtest.Repositories.ProduitRepository;
+import tn.esprit.springtest.Repositories.RayonRepository;
 import tn.esprit.springtest.Repositories.StockRepository;
 
 import java.util.List;
@@ -20,20 +18,41 @@ StockRepository stockRepository;
 
 
 
-
     @Override
-    void assignProduitToStock(Long idProduit, Long idStock){
-        Produit produit= ProduitRepository.findById(idProduit).orElse(null);
-        Stock stock= StockRepository.findById(idStock).orElse(null);
+    public List<Produit> retrieveAllProduits(){return produitRepository.findAll();
+
+    }
+    @Override
+    public Produit addProduit(Produit p, Long idRayon, Long idStock){return produitRepository.save(p);
+
+    }
+    @Override
+    public Produit retrieveProduit(Long id){return produitRepository.findById(id).orElse(null);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+ /*   @Override
+    public void assignProduitToStock(Long idProduit, Long idStock){
+        Produit produit= produitRepository.findById(idProduit).orElse(null);
+        Stock stock= stockRepository.findById(idStock).orElse(null);
         if(produit !=null && stock!=null){
-            produit.getIdProduit().add(stock);
-            StockRepository.s(produit);
-        }
+            produit.getIdStock.add(stock);
+            stockRepository.save(produit);
+        }*/
 
 
 
-    };
+    }
 
 
 
-}
