@@ -2,6 +2,7 @@ package tn.esprit.springtest.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.springtest.Entities.DetailProduit;
 import tn.esprit.springtest.Entities.Fournisseur;
 import tn.esprit.springtest.Entities.Produit;
 import tn.esprit.springtest.Entities.Stock;
@@ -9,6 +10,7 @@ import tn.esprit.springtest.Repositories.FournisseurRepository;
 import tn.esprit.springtest.Repositories.ProduitRepository;
 import tn.esprit.springtest.Repositories.StockRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -67,6 +69,23 @@ StockRepository stockRepository;
        }
        produitRepository.save(p);
    }
+
+
+
+	@Override
+	public int getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate) {
+		int somme=0;
+		Produit m = produitRepository.findById(idProduit).get();
+       // m.getDetailProduit();
+        DetailProduit d = m.getDetailProduit();
+
+			if (d.getDateCreation().after(startDate) && d.getDateDerniereModification().before(endDate) ) {
+				somme+= d.getProduit().getPrixUnitaire();
+			}
+
+		return somme;
+	}
+
 
 
 

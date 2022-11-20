@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -36,6 +37,6 @@ public class Produit implements Serializable{
     private    DetailProduit detailProduit;
 
     @OneToMany(mappedBy = "produit")
-    private  List<DetailFacture> detailFactures;
+    private Set<DetailFacture> detailFactures;
 
 }
