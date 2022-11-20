@@ -2,8 +2,10 @@ package tn.esprit.springtest.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.springtest.Entities.Fournisseur;
 import tn.esprit.springtest.Entities.Produit;
 import tn.esprit.springtest.Entities.Stock;
+import tn.esprit.springtest.Repositories.FournisseurRepository;
 import tn.esprit.springtest.Repositories.ProduitRepository;
 import tn.esprit.springtest.Repositories.StockRepository;
 
@@ -15,7 +17,7 @@ public class ProduitService implements IProduitService{
 @Autowired
 ProduitRepository produitRepository;
 StockRepository stockRepository;
-
+    FournisseurRepository fournisseurRepository;
 
 
     @Override
@@ -34,6 +36,21 @@ StockRepository stockRepository;
 
 
 
+    @Override
+    public void assignFournisseurToProduit(Long fournisseurId, Long produitId) {
+
+         Produit p = produitRepository.findById(produitId).orElse(null);
+        Fournisseur F = fournisseurRepository.findById(fournisseurId).orElse(null);
+          if (p != null && F != null)
+          {
+            p.getFournisseurs().add(F);
+        produitRepository.save(p);
+
+
+        }
+
+
+    }
 
 
 
@@ -50,6 +67,10 @@ StockRepository stockRepository;
        }
        produitRepository.save(p);
    }
+
+
+
+
 
 
 

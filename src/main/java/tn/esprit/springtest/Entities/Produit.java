@@ -29,7 +29,7 @@ public class Produit implements Serializable{
     @ManyToOne
     private   Rayon rayon;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private   List<Fournisseur> fournisseurs;
 
     @OneToOne(mappedBy = "produit")
